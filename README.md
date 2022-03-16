@@ -10,7 +10,7 @@ npm install
 # serve with hot reload at localhost:5000
 npm start
 
-Res API project with built in authentication, database integration with sequelize ORM
+Database integration with sequelize ORM, rest API project with built in authentication
  
 ## Authors
 
