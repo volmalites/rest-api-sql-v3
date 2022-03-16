@@ -47,7 +47,7 @@ router.post('/', authenticateUser, asyncHandler(async (req, res, next) => {
   const course = await Course.create(req.body); 
   if (course) {
     res.setHeader('Location', '/');
-    res.status(201).json(course);
+    res.status(201).end();
   }
 }));
 
@@ -88,7 +88,7 @@ router.delete('/:id', authenticateUser, asyncHandler(async (req, res, next) => {
     if (req.currentUser.id !== course.userId) {
       res.status(403).json({ message: 'You are not the owner of this course' });
     } else {
-      //await course.destroy();
+      await course.destroy();
       res.status(204).end();
     }
   } else {

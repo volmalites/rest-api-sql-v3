@@ -8,6 +8,7 @@ const { authenticateUser } = require('../middleware/auth-user');
 /* Returns all users */
 router.get('/', authenticateUser, asyncHandler(async (req, res, next) => {
   const users = await User.findAll({
+    where: { id: req.currentUser.id },
     attributes: {exclude: ['password', 'createdAt', 'updatedAt']},
   });
   if (users) {
@@ -24,7 +25,7 @@ router.post('/', asyncHandler(async (req, res, next) => {
     const user = await User.create(req.body); 
     if (user) {
       res.setHeader('Location', '/');
-      res.status(201).json(user);
+      res.status(201).end();
     }
   } catch(err) {
     if (err.name === 'SequelizeUniqueConstraintError') {
