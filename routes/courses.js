@@ -46,7 +46,7 @@ router.get('/:id', asyncHandler(async (req, res, next) => {
 router.post('/', authenticateUser, asyncHandler(async (req, res, next) => {
   const course = await Course.create(req.body); 
   if (course) {
-    res.setHeader('Location', '/');
+    res.setHeader('Location', '/courses/' + course.id);
     res.status(201).end();
   }
 }));
