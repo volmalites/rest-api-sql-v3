@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
           msg: 'A last name is required',
         },
         notEmpty: {
-          msg: 'Please provide a last',
+          msg: 'Please provide a last name',
         },
       },
     },

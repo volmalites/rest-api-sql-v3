@@ -29,7 +29,9 @@ const enableGlobalErrorLogging = process.env.ENABLE_GLOBAL_ERROR_LOGGING === 'tr
 const app = express();
 
 // cross origin support
-app.use(cors());
+app.use(cors({
+  exposedHeaders: ['Location'],
+}));
 
 // Setup request body JSON parsing.
 app.use(express.json());
